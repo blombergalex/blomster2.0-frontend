@@ -1,6 +1,6 @@
 "use client";
 
-import { logInSchema } from "@/utils/schemas";
+import { logInSchema } from "@/lib/schemas";
 
 import { Button, Input } from "@nextui-org/react";
 // import { toast } from "sonner";
@@ -9,7 +9,11 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { errorClasses, secondaryButtonClasses, inputClasses } from "@/utils/classes";
+import {
+  errorClasses,
+  secondaryButtonClasses,
+  inputClasses,
+} from "@/utils/classes";
 
 export const LogInForm = () => {
   // const { mutate, isPending } = useMutation({
@@ -33,8 +37,8 @@ export const LogInForm = () => {
 
   return (
     <form
-    // onSubmit={handleSubmit((values) => mutate(values))}
-    onSubmit={() => console.log('Logging in')}
+      // onSubmit={handleSubmit((values) => mutate(values))}
+      onSubmit={() => console.log("Logging in")}
       className="flex w-full flex-col max-w-md gap-4"
     >
       <div className="flex flex-col gap-4 items-center mx-4">
