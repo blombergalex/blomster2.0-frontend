@@ -1,55 +1,43 @@
 "use client";
 
 import { Button, Input } from "@nextui-org/react";
-// import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-// import { useMutation } from "@tanstack/react-query";
+import { toast } from "Sonner";
+import { useMutation } from "@tanstack/react-query";
 
-import { signUpSchema } from "@/lib/schemas";
+import { signUpSchema, type SignUpValues } from "@/lib/schemas";
 import {
   secondaryButtonClasses,
-  errorClasses,
   inputClasses,
 } from "@/utils/classes";
+import { handleServerActionError } from "@/lib/error-handling";
+import { signUp } from "@/actions/sign-up";
+import { FieldError } from "@/components/field-error";
 
 export const SignUpForm = () => {
-  // const { mutate, isPending } = useMutation({
-  //   mutationFn: async (variables:z.infer<typeof signUpSchema>) => {
-  //     handleServerError(await signUp(variables))
-  //   },
-  //   onError: (error) => toast.error(error.message),
-  //   onSuccess: () => toast.success('Account created successfully')
-  // })
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (values:SignUpValues) => {
+      handleServerActionError(await signUp(values))
+    },
+    onError: (error) => toast.error(error.message),
+    onSuccess: () => toast.success('Account created successfully')
+  })
 
   const {
     register,
-    // handleSubmit,
+    handleSubmit,
     formState: { errors },
-  } = useForm<z.infer<typeof signUpSchema>>({
+  } = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
   });
 
   return (
     <form
-      // onSubmit={handleSubmit((values) => mutate(values))}
-      onSubmit={() => console.log("Signing up")}
+      onSubmit={handleSubmit((values) => mutate(values))}
       className="flex w-full flex-col max-w-md gap-4"
     >
       <div className="flex flex-col gap-4 items-center mx-4">
-        <div className="w-2/3">
-          <Input
-            className={inputClasses}
-            {...register("email")}
-            label="Email"
-            name="email"
-            required
-          />
-          {errors.email && (
-            <span className={errorClasses}>{errors.email.message}</span>
-          )}
-        </div>
         <div className="w-2/3">
           <Input
             className={inputClasses}
@@ -58,7 +46,8 @@ export const SignUpForm = () => {
             required
           />
           {errors.username && (
-            <span className={errorClasses}>{errors.username.message}</span>
+            // <span className={errorClasses}>{errors.username}</span>
+            <FieldError error={errors.username}/>
           )}
         </div>
         <div className="w-2/3">
@@ -70,12 +59,11 @@ export const SignUpForm = () => {
             required
           />
           {errors.password && (
-            <span className={errorClasses}>{errors.password.message}</span>
+            <FieldError error={errors.password}/>
           )}
         </div>
         <Button className={secondaryButtonClasses} type="submit" size="sm">
-          {/* {isPending ? 'Creating...' : 'Sign up'} */}
-          Sign up
+          {isPending ? 'Creating...' : 'Sign up'}
         </Button>
       </div>
     </form>

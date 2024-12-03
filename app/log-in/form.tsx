@@ -14,6 +14,7 @@ import {
   secondaryButtonClasses,
   inputClasses,
 } from "@/utils/classes";
+import { FieldError } from "@/components/field-error";
 
 export const LogInForm = () => {
   // const { mutate, isPending } = useMutation({
@@ -45,11 +46,11 @@ export const LogInForm = () => {
         <div className="w-2/3">
           <Input
             className={inputClasses}
-            {...register("email")}
+            {...register("username")}
             label="Email"
           />
-          {errors.email && (
-            <span className={errorClasses}>{errors.email.message}</span>
+          {errors.username && (
+            <FieldError error={errors.username}/>
           )}
         </div>
         <div className="w-2/3">
@@ -60,7 +61,7 @@ export const LogInForm = () => {
             label="Password"
           />
           {errors.password && (
-            <span className={errorClasses}>{errors.password.message}</span>
+            <FieldError error={errors.password}/>
           )}
         </div>
         <Button className={secondaryButtonClasses} type="submit" size="sm">
