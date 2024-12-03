@@ -11,7 +11,7 @@ import {
   secondaryButtonClasses,
   inputClasses,
 } from "@/utils/classes";
-import { handleServerActionError } from "@/lib/error-handling";
+import { handleServerActionError, toastServerError } from "@/lib/error-handling";
 import { signUp } from "@/actions/sign-up";
 import { FieldError } from "@/components/field-error";
 
@@ -20,7 +20,7 @@ export const SignUpForm = () => {
     mutationFn: async (values:SignUpValues) => {
       handleServerActionError(await signUp(values))
     },
-    onError: (error) => toast.error(error.message),
+    onError: toastServerError,
     onSuccess: () => toast.success('Account created successfully')
   })
 
@@ -62,7 +62,7 @@ export const SignUpForm = () => {
             <FieldError error={errors.password}/>
           )}
         </div>
-        <Button className={secondaryButtonClasses} type="submit" size="sm">
+        <Button className={secondaryButtonClasses} type="submit" size="sm" disabled={isPending}>
           {isPending ? 'Creating...' : 'Sign up'}
         </Button>
       </div>

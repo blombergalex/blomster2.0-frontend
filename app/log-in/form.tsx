@@ -1,45 +1,45 @@
 "use client";
 
-import { logInSchema } from "@/lib/schemas";
+import { logInSchema, LogInValues } from "@/lib/schemas";
 
 import { Button, Input } from "@nextui-org/react";
-// import { toast } from "sonner";
 import { useForm } from "react-hook-form";
-// import { useMutation } from "@tanstack/react-query";
-import { z } from "zod";
+import { toast } from "Sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 
 import {
-  errorClasses,
   secondaryButtonClasses,
   inputClasses,
 } from "@/utils/classes";
 import { FieldError } from "@/components/field-error";
+import { handleServerActionError, toastServerError } from "@/lib/error-handling";
+import { logIn } from "@/actions/log-in";
 
 export const LogInForm = () => {
-  // const { mutate, isPending } = useMutation({
-  //   mutationFn: async (variables:z.infer<typeof logInSchema>) => {
-  //     handleServerError(await logIn(variables))
-  //   },
-  //   onError: (error) => toast.error(error.message),
-  //   onSuccess: (result, variables) => {
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (values:LogInValues) => {
+      handleServerActionError(await logIn(values))
+    },
+    onError: toastServerError,
+    onSuccess: (result, values) => {
   //     console.log({result, variables})
-  //     toast.success(`Logged in with ${variables.email}`);
-  //   }
-  // });
+      toast.success(`Logged in with ${values.username}`);
+    }
+  });
 
   const {
     register,
-    // handleSubmit,
+    handleSubmit,
     formState: { errors },
-  } = useForm<z.infer<typeof logInSchema>>({
+  } = useForm<LogInValues>({
     resolver: zodResolver(logInSchema),
   });
 
   return (
     <form
-      // onSubmit={handleSubmit((values) => mutate(values))}
-      onSubmit={() => console.log("Logging in")}
+      onSubmit={handleSubmit((values) => mutate(values))}
+      // onSubmit={() => console.log("Logging in")}
       className="flex w-full flex-col max-w-md gap-4"
     >
       <div className="flex flex-col gap-4 items-center mx-4">
@@ -47,7 +47,7 @@ export const LogInForm = () => {
           <Input
             className={inputClasses}
             {...register("username")}
-            label="Email"
+            label="Username"
           />
           {errors.username && (
             <FieldError error={errors.username}/>
@@ -64,9 +64,8 @@ export const LogInForm = () => {
             <FieldError error={errors.password}/>
           )}
         </div>
-        <Button className={secondaryButtonClasses} type="submit" size="sm">
-          {/* {isPending ? "Logging in..." : "Log in"} */}
-          Log in
+        <Button className={secondaryButtonClasses} type="submit" size="sm" disabled={isPending}>
+          {isPending ? "Logging in..." : "Log in"}
         </Button>
       </div>
     </form>
