@@ -39,7 +39,6 @@ export const LogInForm = () => {
   return (
     <form
       onSubmit={handleSubmit((values) => mutate(values))}
-      // onSubmit={() => console.log("Logging in")}
       className="flex w-full flex-col max-w-md gap-4"
     >
       <div className="flex flex-col gap-4 items-center mx-4">

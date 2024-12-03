@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import { QueryClientProvider } from "@/providers/query-client-provider";
 import { Toaster } from "Sonner";
+import { NextUIProvider } from "@nextui-org/react";
 
 export const metadata: Metadata = {
   title: "Blomster 2.0",
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="dark flex flex-col min-h-screen text-primary bg-background">
         <QueryClientProvider>
-          {children}
-          <Footer />
-          <Toaster />
+          <NextUIProvider>
+            {children}
+            <Footer />
+            <Toaster />
+          </NextUIProvider>
         </QueryClientProvider>
       </body>
     </html>

@@ -21,7 +21,7 @@ export const SignUpForm = () => {
       handleServerActionError(await signUp(values))
     },
     onError: toastServerError,
-    onSuccess: () => toast.success('Account created successfully')
+    onSuccess: () => toast.success('Account created successfully') //hur trigga success toast?
   })
 
   const {
@@ -29,7 +29,7 @@ export const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpValues>({
-    resolver: zodResolver(signUpSchema),
+    resolver: zodResolver(signUpSchema), //varför körs den inte om formulär submittas tomt? 
   });
 
   return (
@@ -46,7 +46,6 @@ export const SignUpForm = () => {
             required
           />
           {errors.username && (
-            // <span className={errorClasses}>{errors.username}</span>
             <FieldError error={errors.username}/>
           )}
         </div>
