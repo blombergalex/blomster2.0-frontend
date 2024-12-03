@@ -15,7 +15,7 @@ export default function LogInPage() {
         <h1 className='text-2xl font-bold'>Welcome to Blomster</h1>
         <SignUpForm />
       </div>
-      <Link href='/auth/log-in' className='text-primary-500 text-small hover:underline underline-offset-2'>
+      <Link href='/log-in' className='text-primary-500 text-small hover:underline underline-offset-2'>
         Already have an account? Log in
       </Link>
     </main>

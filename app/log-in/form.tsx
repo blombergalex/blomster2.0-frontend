@@ -23,7 +23,7 @@ export const LogInForm = () => {
     },
     onError: toastServerError,
     onSuccess: (result, values) => {
-  //     console.log({result, variables})
+      console.log({result, values})
       toast.success(`Logged in with ${values.username}`);
     }
   });

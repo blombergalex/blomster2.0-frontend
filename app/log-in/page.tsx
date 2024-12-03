@@ -17,7 +17,7 @@ export default function LogInPage() {
       </div>
       <div className="text-primary-500 mt-6 text-small">
         <Link
-          href="/auth/sign-up"
+          href="/sign-up"
           className="hover:underline underline-offset-2"
         >
           Don&apos;t have an account? Sign up

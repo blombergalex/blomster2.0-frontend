@@ -11,10 +11,11 @@ export const logIn = async (
   const parsedData = logInSchema.parse(data);
 
   try {
-    await client.post('/log-in', parsedData)
+    const response = await client.post('/log-in', parsedData)
+    console.log(response.data)
   } catch (error) {
     return handleAxiosError(error)    
   }
 
-  redirect('/posts')
+  redirect('/')
 };
