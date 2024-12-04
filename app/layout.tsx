@@ -18,13 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="dark flex flex-col min-h-screen text-primary bg-background">
-        <QueryClientProvider>
-          <NextUIProvider>
+        <NextUIProvider>
+          <QueryClientProvider>
             {children}
             <Footer />
             <Toaster />
-          </NextUIProvider>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </NextUIProvider>
       </body>
     </html>
   );

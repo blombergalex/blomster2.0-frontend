@@ -6,6 +6,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -29,6 +30,7 @@ const config: Config = {
               foreground: '#ffffff',
               300: '#F4743B', // Dark orange
               500: '#D3D3D3', // Light text color
+              600: '#27272a', // Dark grey
             },
           },
         },
