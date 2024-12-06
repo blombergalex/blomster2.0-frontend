@@ -8,10 +8,6 @@ import { toast } from "Sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 
-import {
-  secondaryButtonClasses,
-  inputClasses,
-} from "@/utils/classes";
 import { FieldError } from "@/components/field-error";
 import { handleServerActionError, toastServerError } from "@/lib/error-handling";
 import { logIn } from "@/actions/log-in";
@@ -44,7 +40,6 @@ export const LogInForm = () => {
       <div className="flex flex-col gap-4 items-center mx-4">
         <div className="w-2/3">
           <Input
-            className={inputClasses}
             {...register("username")}
             label="Username"
           />
@@ -54,7 +49,6 @@ export const LogInForm = () => {
         </div>
         <div className="w-2/3">
           <Input
-            className={inputClasses}
             {...register("password")}
             type="password"
             label="Password"
@@ -63,7 +57,7 @@ export const LogInForm = () => {
             <FieldError error={errors.password}/>
           )}
         </div>
-        <Button className={secondaryButtonClasses} type="submit" size="sm" disabled={isPending}>
+        <Button type="submit" size="sm" disabled={isPending}>
           {isPending ? "Logging in..." : "Log in"}
         </Button>
       </div>
