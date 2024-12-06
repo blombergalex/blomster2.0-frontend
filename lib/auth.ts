@@ -6,13 +6,13 @@ import { profileSchema } from "./schemas";
 const setAccessToken = async (accessToken: string) => {
   const cookieStore = await cookies();
 
-  cookieStore.set("acces-token", accessToken, { httpOnly: true });
+  cookieStore.set("access-token", accessToken, { httpOnly: true });
 };
 
 const deleteAccessToken = async () => {
   const cookieStore = await cookies();
 
-  cookieStore.delete("acces-token");
+  cookieStore.delete("access-token");
 };
 
 const getAccessToken = async () => {
@@ -25,7 +25,7 @@ const getUser = async () => {
   const accessToken = await getAccessToken();
 
   if (!accessToken) {
-    return { error: "Access token missing" };
+    return null;
   }
 
   try {
@@ -37,13 +37,15 @@ const getUser = async () => {
 
     const { data, error } = profileSchema.safeParse(response.data);
     if (error) {
+      console.error(error)
       return null;
+
     }
 
     return data
 
   } catch (error) {
-    console.error(error);
+    console.error(error)
     return null;
   }
 };

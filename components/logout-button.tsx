@@ -2,13 +2,9 @@
 
 import { Button } from '@nextui-org/react'
 import { logOutButtonClasses } from '@/utils/classes'
+import { logOut } from '@/actions/log-out'
 
 const LogOutButton = () => {
-
-  const logOut = () => {
-    console.log("logging out") // create actual log out action
-  }
-
   return (
     <Button className={logOutButtonClasses} onClick={() => logOut()}>Log out</Button>
   )

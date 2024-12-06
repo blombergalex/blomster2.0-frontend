@@ -9,7 +9,6 @@ import { useMutation } from "@tanstack/react-query";
 import { signUpSchema, type SignUpValues } from "@/lib/schemas";
 import {
   secondaryButtonClasses,
-  inputClasses,
 } from "@/utils/classes";
 import { handleServerActionError, toastServerError } from "@/lib/error-handling";
 import { signUp } from "@/actions/sign-up";
@@ -40,7 +39,6 @@ export const SignUpForm = () => {
       <div className="flex flex-col gap-4 items-center mx-4">
         <div className="w-2/3">
           <Input
-            className={inputClasses}
             {...register("username")}
             label="Username"
             required
@@ -51,7 +49,6 @@ export const SignUpForm = () => {
         </div>
         <div className="w-2/3">
           <Input
-            className={inputClasses}
             {...register("password")}
             type="password"
             label="Password"
