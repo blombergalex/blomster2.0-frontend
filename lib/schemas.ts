@@ -41,3 +41,15 @@ export const profileSchema = z.object({
 })
 
 export type ProfileData = z.infer<typeof profileSchema>
+
+export const postPageSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  content: z.string().optional(),
+  author: z.object({
+    username: z.string(),
+    id: z.string(),
+  })
+})
+
+export type PostPageData = z.infer<typeof postPageSchema>
