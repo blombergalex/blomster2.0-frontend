@@ -8,7 +8,6 @@ import { useMutation } from "@tanstack/react-query";
 
 import { signUpSchema, type SignUpValues } from "@/lib/schemas";
 import {
-  secondaryButtonClasses,
 } from "@/utils/classes";
 import { handleServerActionError, toastServerError } from "@/lib/error-handling";
 import { signUp } from "@/actions/sign-up";

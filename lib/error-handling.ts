@@ -18,11 +18,13 @@ export const handleAxiosError = (error: unknown): ServerActionResponse => {
     return { error: defaultErrorMessage };
   }
 
-  return { error: error.response?.data.message || defaultErrorMessage };
+  return {
+    error: error.response?.data.message || defaultErrorMessage,
+  };
 };
 
-export const toastServerError = (error:Error) => {
+export const toastServerError = (error: Error) => {
   if (!isRedirectError(error)) {
-    toast.error(error.message)
-  } 
-}
+    toast.error(error.message);
+  }
+};

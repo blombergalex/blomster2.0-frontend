@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Input } from "@nextui-org/react";
 import { Textarea } from "@nextui-org/input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,7 +33,7 @@ export const CreatePostForm = () => {
   return (
     <form
       onSubmit={handleSubmit((values) => mutate(values))}
-      className="flex w-full flex-col gap-4 md:w-2/3"
+      className="flex w-full flex-col gap-4 md:w-1/3"
     >
       <Input {...register("title")} label="Title" />
       {errors.title && <FieldError error={errors.title} />}

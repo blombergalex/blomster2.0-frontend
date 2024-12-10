@@ -1,5 +1,5 @@
 'use server'
 
-export const deletePost = () => {
+export const deletePost = async () => {
   
 }

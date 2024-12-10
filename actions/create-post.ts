@@ -15,7 +15,7 @@ export const createPost = async (data: PostValues) => {
     return { error: "You need to be logged in to create post" };
   }
 
-  let id; // skapas för att nå id utanför try-catch-blocket för redirect
+  let id;
 
   try {
     //gör en post request till /posts (som stämmer överens med post requesten i backend)
