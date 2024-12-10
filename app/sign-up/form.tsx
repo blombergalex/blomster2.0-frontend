@@ -58,7 +58,7 @@ export const SignUpForm = () => {
             <FieldError error={errors.password}/>
           )}
         </div>
-        <Button className={secondaryButtonClasses} type="submit" size="sm" disabled={isPending}>
+        <Button type="submit" size="sm" disabled={isPending}>
           {isPending ? 'Creating...' : 'Sign up'}
         </Button>
       </div>

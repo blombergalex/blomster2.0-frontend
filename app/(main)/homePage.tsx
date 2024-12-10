@@ -1,6 +1,6 @@
 import { Post } from "@/components/post";
 
-// export const revalidate = 60 * 15;
+export const revalidate = 60 * 15;
 
 export default async function Home() {
   const posts = "posts"
@@ -20,7 +20,8 @@ export default async function Home() {
         </div>
       ) : (
         <section className="flex flex-col gap-2 w-full px-2 items-center">
-          {posts.map(({ id, title, slug, users, content, username }) => (
+          fetching posts...
+          {/* {posts.map(({ id, title, slug, users, content, username }) => (
             <Post
               key={id}
               username="unknown"
@@ -28,7 +29,7 @@ export default async function Home() {
               slug="slug"
               content="content"
             />
-          ))}
+          ))} */}
         </section>
       )}
     </main>
