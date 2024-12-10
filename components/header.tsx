@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link";
 import { UserCircleIcon as SolidUserCircleIcon} from "@heroicons/react/16/solid";
 
