@@ -38,7 +38,7 @@ export default async function PostPage({
               <Link href={`/post/:id/edit`}>
                 <EditPostButton />
               </Link>
-              <DeletePostButton postId={post.id} />
+              <DeletePostButton />
             </div>
           )}
         </CardHeader>
