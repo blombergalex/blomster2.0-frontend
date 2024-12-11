@@ -5,7 +5,7 @@ import { getPost } from "@/lib/queries";
 import { Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { notFound } from "next/navigation";
 
-export const revalidate = 60 * 15;
+export const revalidate = 900;
 
 export default async function PostPage({
   params,
