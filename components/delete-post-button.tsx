@@ -5,7 +5,7 @@ import { secondaryButtonClasses } from "@/utils/classes";
 
 import { Button } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import { toast } from "Sonner";
+import { toast } from "sonner";
 
 export const DeletePostButton = ({ postId }: { postId: string }) => {
   // const { mutate } = useMutation({
@@ -17,9 +17,8 @@ export const DeletePostButton = ({ postId }: { postId: string }) => {
   // });
 
   return (
-    <Button className={secondaryButtonClasses} onClick={() => 
-      deletePost()}>
-    {/* mutate()}> */}
+    <Button className={secondaryButtonClasses} onClick={() => deletePost()}>
+      {/* mutate()}> */}
       Delete
     </Button>
   );

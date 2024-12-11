@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import { isRedirectError } from "next/dist/client/components/redirect";
-import { toast } from "Sonner";
+import { toast } from "sonner";
 
 export type ServerActionResponse = { error: string } | undefined | void;
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/footer";
 import { QueryClientProvider } from "@/providers/query-client-provider";
-import { Toaster } from 'Sonner';
+import { Toaster } from "sonner";
 import { NextUIProvider } from "@nextui-org/react";
 import Header from "@/components/header";
 
