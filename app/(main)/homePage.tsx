@@ -1,5 +1,3 @@
-import { Post } from "@/components/post";
-
 export const revalidate = 900;
 
 export default async function Home() {
