@@ -26,6 +26,8 @@ export const commentSchema = z.object({
   post_id: z.string(),
 })
 
+export type CommentValues = z.infer<typeof commentSchema>
+
 export const postActionSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().optional()
