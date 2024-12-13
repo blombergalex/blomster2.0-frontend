@@ -17,13 +17,11 @@ export const getPost = async (id: string) => {
 }
 
 // do same as below for post page to render comments
-export const getPosts = async () => {
-  // hämta ut posts från backend
-  // parse posts to make sure data is right
-  // if no posts return null
-
+export const getPosts = async (limit: number, page: number) => {
   try {
-    const response = await client.get('/posts') //var get requesten görs
+    const response = await client.get('/posts', {
+      params: {limit, page}
+    })
 
     const {data, error} = homepagePostsSchema.safeParse(response.data)
     if (error) {
