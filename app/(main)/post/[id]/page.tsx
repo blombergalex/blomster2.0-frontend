@@ -37,7 +37,7 @@ export default async function PostPage({
             <div className="flex gap-1">
               <Link href={`/post/${post.id}/edit`}>
                 {/* <EditPostButton /> */}
-                <Button>
+                <Button>-
                   Edit
                 </Button>
               </Link>

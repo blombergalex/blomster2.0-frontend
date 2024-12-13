@@ -55,3 +55,17 @@ export const postPageSchema = z.object({
 })
 
 export type PostPageData = z.infer<typeof postPageSchema>
+
+export const homepagePostsSchema = z.array(
+  z.object({
+    id: z.string(),
+    title: z.string(),
+    author: z.object({
+      username: z.string()
+    }),
+  })
+)
+
+export type HomepagePostsData = z.infer<typeof homepagePostsSchema> 
+
+// do same for comments
