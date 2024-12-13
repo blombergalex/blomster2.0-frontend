@@ -34,5 +34,5 @@ export const createComment = async (data: CommentValues) => {
     return { error: "Could not revalidate page" };
   }
 
-  revalidatePath('/post/${id}')
+  revalidatePath(`/post/${id}`)
 };
