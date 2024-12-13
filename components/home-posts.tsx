@@ -49,7 +49,6 @@ export const HomePosts = ({
             </CardHeader>
             <CardBody className="overflow-visible py-2 px-4">
               {/* <p>{trimmedContent}</p> */}
-              efsdsds
             </CardBody>
           </Card>
         </Link>
