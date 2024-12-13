@@ -3,8 +3,9 @@
 import { getPosts } from "@/lib/queries";
 import { HomepagePostsData } from "@/lib/schemas";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 
 export const HomePosts = ({
@@ -34,9 +35,23 @@ export const HomePosts = ({
   return (
     <section className="flex flex-col gap-2 w-full px-2 items-center">
       {currentPosts.map(({ id, title, author }) => (
-        <Link key={id} href={`/post/${id}`}>
-          <span>{author.username}</span>
-          <h2>{title}</h2>
+        <Link
+          key={id}
+          href={`/post/${id}`}
+          className="w-full rounded-sm p-2 md:w-2/3"
+        >
+          <Card className="flex w-full py-4 border-2 border-white bg-primary text-primary-foreground">
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start z-0">
+              <p className="text-tiny uppercase font-bold">
+                @{author.username}
+              </p>
+              <h4 className="font-bold text-large">{title}</h4>
+            </CardHeader>
+            <CardBody className="overflow-visible py-2 px-4">
+              {/* <p>{trimmedContent}</p> */}
+              efsdsds
+            </CardBody>
+          </Card>
         </Link>
       ))}
       <Loader
@@ -57,31 +72,31 @@ const Loader = ({
   isFetchingNextPage: boolean;
   fetchNextPage: () => void;
 }) => {
-  const loader = useRef(null)
+  const loader = useRef(null);
 
   useEffect(() => {
-    const {current } = loader
-    if (!current) return
+    const { current } = loader;
+    if (!current) return;
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry?.isIntersecting && !isFetchingNextPage) {
-        fetchNextPage()
+        fetchNextPage();
       }
-    })
+    });
 
-    observer.observe(current)
+    observer.observe(current);
     return () => {
-      observer.unobserve(current)
-    }
-  }, [loader, fetchNextPage, isFetchingNextPage])
+      observer.unobserve(current);
+    };
+  }, [loader, fetchNextPage, isFetchingNextPage]);
 
   if (!hasNextPage) {
-    return null
+    return null;
   }
 
   return (
     <svg
-    ref={loader}
+      ref={loader}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
