@@ -2,7 +2,7 @@ import { DeletePostButton } from "@/components/delete-post-button";
 import { EditPostButton } from "@/components/edit-post-button";
 import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/queries";
-import { Card, CardBody, CardHeader, Link } from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { notFound } from "next/navigation";
 
 export const revalidate = 900;
@@ -35,8 +35,11 @@ export default async function PostPage({
           </div>
           {isPostAuthor && (
             <div className="flex gap-1">
-              <Link href={`/post/:id/edit`}>
-                <EditPostButton />
+              <Link href={`/post/${post.id}/edit`}>
+                {/* <EditPostButton /> */}
+                <Button>
+                  Edit
+                </Button>
               </Link>
               <DeletePostButton postId={post.id}/>
             </div>

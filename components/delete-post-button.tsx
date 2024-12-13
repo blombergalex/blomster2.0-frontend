@@ -13,7 +13,6 @@ export const DeletePostButton = ({ postId }: { postId: string }) => {
     },
     onError: toastServerError,
     // onSuccess: () => toast.success("Deleted post"),
-    // onMutate: () => toast.loading("Deleting post"),
     // onSettled: () => toast.dismiss(),
   });
 
