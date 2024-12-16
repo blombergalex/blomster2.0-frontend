@@ -19,7 +19,7 @@ export const createComment = async (data: CommentValues) => {
 
   try {
     //gör en post request till /posts (som stämmer överens med post requesten i backend)
-    const response = await client.post("/posts/:id", parsedData, {
+    const response = await client.post("/posts/:id", parsedData, { // kanske ska va `/posts/${postId}`
       headers: {
         Authorization: `Bearer ${accessToken.value}`,
       },
