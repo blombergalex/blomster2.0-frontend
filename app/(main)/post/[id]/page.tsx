@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/queries";
 import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { notFound } from "next/navigation";
+import Comment from "postcss/lib/comment";
 
 export const revalidate = 900;
 
@@ -48,24 +49,30 @@ export default async function PostPage({
           <p className="text-md p-1">{post.content}</p>
         </CardBody>
       </Card>
-      {/* <Card className="my-4 bg-background rounded-none shadow-none">
+      <Card className="my-4 bg-background rounded-none shadow-none">
         <p className="text-tiny uppercase font-semibold m-4">Comments</p>
-        {comments &&
-          comments.map(({ id, content, users, comment_user_id, created_at}) => (
-            <Comment
-              id={id}
-              key={id}
+        {post.comments &&
+          post.comments.map(({ _id, content, author}) => (
+            <Comment 
+              key={_id}
+              _id={_id}
               content={content}
-              user={users?.username}
-              post_id={post.id}
-              isPostAuthor={isPostAuthor}
-              comment_user_id={comment_user_id}
-              auth_user_id={auth_user_id}
-              created_at={created_at}
+              author={author}
             />
+            // <Comment
+            //   id={id}
+            //   key={id}
+            //   content={content}
+            //   user={users?.username}
+            //   post_id={post.id}
+            //   isPostAuthor={isPostAuthor}
+            //   comment_user_id={comment_user_id}
+            //   auth_user_id={auth_user_id}
+            // />
+
           ))}
-        {user && <CommentForm post_id={post.id} />}
-      </Card> */}
+        {/* {user && <CommentForm post_id={post.id} />} */}
+      </Card>
     </main>
   );
 }
