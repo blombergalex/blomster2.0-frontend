@@ -49,3 +49,4 @@ export const getPosts = async (limit: number, page: number) => {
 //     return null;
 //   }
 // }
+

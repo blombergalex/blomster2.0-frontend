@@ -18,12 +18,7 @@ export default async function PostPage({
     return notFound();
   }
 
-  // const comments = await getComments(id)
-
-  // if (!comments) {
-  //   console.log('no comments found')
-  // }
-  // console.log('comments: ', comments)
+  console.log(post)
 
   const user = await auth.getUser();
   const isPostAuthor = user && user.id === post.author.id;

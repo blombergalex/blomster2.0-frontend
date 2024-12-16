@@ -58,11 +58,8 @@ export const postPageSchema = z.object({
   comments: z.array(
     z.object({
       content: z.string(),
-      id: z.string(),
-      author: z.object({
-        username: z.string(),
-        id: z.string(),
-      }),
+      author: z.string(),
+      _id: z.string(),
     })
   ),
 });
@@ -83,17 +80,3 @@ export const homepagePostsSchema = z.object({
 });
 
 export type HomepagePostsData = z.infer<typeof homepagePostsSchema>;
-
-// export const postCommentSchema = z.object({
-//   comments: z.array(
-//     z.object({
-//       id: z.string(),
-//       content: z.string(),
-//       author: z.object({
-//         username: z.string(),
-//       }),
-//     })
-//   ),
-// });
-
-// export type commentSchemaData = z.infer<typeof postCommentSchema>;
