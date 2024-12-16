@@ -12,8 +12,6 @@ export const DeletePostButton = ({ postId }: { postId: string }) => {
       handleServerActionError(await deletePost(postId))
     },
     onError: toastServerError,
-    // onSuccess: () => toast.success("Deleted post"),
-    // onSettled: () => toast.dismiss(),
   });
 
   return (

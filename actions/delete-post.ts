@@ -24,5 +24,7 @@ export const deletePost = async (postId: string) => {
   }
 
   revalidatePath("/");
-  redirect("/");
+  redirect("/");  
 };
+
+// repeat for comment
