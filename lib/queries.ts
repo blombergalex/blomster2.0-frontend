@@ -1,5 +1,5 @@
 import { client } from "./client";
-import { homepagePostsSchema, postCommentSchema, postPageSchema } from "./schemas";
+import { homepagePostsSchema, postPageSchema } from "./schemas";
 
 export const getPost = async (id: string) => {
   try {
@@ -16,7 +16,6 @@ export const getPost = async (id: string) => {
   }
 }
 
-// do same as below for post page to render comments
 export const getPosts = async (limit: number, page: number) => {
   try {
     const response = await client.get('/posts', {
@@ -34,17 +33,19 @@ export const getPosts = async (limit: number, page: number) => {
   }
 }
 
-export const getComments = async (id: string) => {
-  try {
-    const response = await client.get(`/post/${id}`)
 
-    const {data, error} = postCommentSchema.safeParse(response.data)
-    if ( error) {
-      return null;
-    }
 
-    return data
-  } catch {
-    return null;
-  }
-}
+// export const getComments = async (id: string) => {
+//   try {
+//     const response = await client.get(`/post/${id}`)
+
+//     const {data, error} = postCommentSchema.safeParse(response.data)
+//     if ( error) {
+//       return null;
+//     }
+
+//     return data
+//   } catch {
+//     return null;
+//   }
+// }

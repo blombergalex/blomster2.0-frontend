@@ -18,6 +18,13 @@ export default async function PostPage({
     return notFound();
   }
 
+  // const comments = await getComments(id)
+
+  // if (!comments) {
+  //   console.log('no comments found')
+  // }
+  // console.log('comments: ', comments)
+
   const user = await auth.getUser();
   const isPostAuthor = user && user.id === post.author.id;
 
@@ -30,7 +37,6 @@ export default async function PostPage({
               {post.author.username}
             </p>
             <h4 className="font-bold text-large">{post.title}</h4>
-            {/* <small className="text-default-500">{reformattedDate}</small> */}
           </div>
           {isPostAuthor && (
             <div className="flex gap-1">
