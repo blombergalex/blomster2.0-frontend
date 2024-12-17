@@ -7,10 +7,10 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 
-export const DeletePostButton = ({ commentId }: { commentId: string }) => {
+export const DeleteCommentButton = ({ _id }: { _id: string }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
-      handleServerActionError(await deleteComment(commentId))
+      handleServerActionError(await deleteComment(_id))
     },
     onError: toastServerError,
   });

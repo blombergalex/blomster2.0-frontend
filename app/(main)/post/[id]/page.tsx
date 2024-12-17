@@ -23,6 +23,7 @@ export default async function PostPage({
 
   const user = await auth.getUser();
   const isPostAuthor = user && user.id === post.author.id;
+  console.log('is post author: ', isPostAuthor)
 
   return (
     <main className="flex flex-col justify-between gap-10 min-h-screen">
@@ -58,18 +59,8 @@ export default async function PostPage({
               _id={_id}
               content={content}
               author={author}
+              isPostAuthor={isPostAuthor}
             />
-            // <Comment
-            //   id={id}
-            //   key={id}
-            //   content={content}
-            //   user={users?.username}
-            //   post_id={post.id}
-            //   isPostAuthor={isPostAuthor}
-            //   comment_user_id={comment_user_id}
-            //   auth_user_id={auth_user_id}
-            // />
-
           ))}
         {/* {user && <CommentForm post_id={post.id} />} */}
       </Card>

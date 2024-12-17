@@ -1,26 +1,26 @@
-'use client'
-
 import { auth } from "@/lib/auth";
-import { PostPageData } from "@/lib/schemas";
-import { CardBody } from "@nextui-org/react"
+import { CardBody } from "@nextui-org/react";
+import { DeleteCommentButton } from "./delete-comment-button";
 
-export const Comment = async ({
-  _id, 
-  author, 
-  content
-}:Pick<PostPageData["comments"][number], "_id" | "author" | "content">
-) => {
+interface CommentProps {
+  _id: string;
+  author: string;
+  content: string;
+  isPostAuthor: boolean | null;
+}
+
+export const Comment = async ({_id, author, content, isPostAuthor} : CommentProps) => {
 
   const user = await auth.getUser();
   const isCommentAuthor = user && user.id === author;
-  
+
   return (
     <CardBody>
-        {/* {(isCommentAuthor || isPostAuthor) && ( */} 
-          {/* <DeleteCommentButton postId={post_id} commentId={id} /> */}
-        {/* )} */}
-          <p className="text-tiny uppercase font-bold">@{author}</p>
-          <p>{content}</p>
-        </CardBody>
-  )
-}
+      {isCommentAuthor || isPostAuthor && (
+        <DeleteCommentButton _id={_id} />
+      )}
+      <p className="text-tiny uppercase font-bold">@{author}</p>
+      <p>{content}</p>
+    </CardBody>
+  );
+};
