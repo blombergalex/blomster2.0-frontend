@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
+import { Votes } from "./votes";
 
 export const HomePosts = ({
   initialData,
@@ -33,7 +34,7 @@ export const HomePosts = ({
 
   return (
     <section className="flex flex-col gap-2 w-full px-2 items-center">
-      {currentPosts.map(({ id, title, author }) => (
+      {currentPosts.map(({ id, title, author, score, upvotes, downvotes }) => (
         <Link
           key={id}
           href={`/post/${id}`}
@@ -45,6 +46,12 @@ export const HomePosts = ({
                 @{author.username}
               </p>
               <h4 className="font-bold text-large">{title}</h4>
+              <Votes
+                postId={id}
+                score={score}
+                upvotes={upvotes}
+                downvotes={downvotes}
+              />
             </CardHeader>
             <CardBody className="overflow-visible py-2 px-4">
               {/* <p>{trimmedContent}</p> */}
