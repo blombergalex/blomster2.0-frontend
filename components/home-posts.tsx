@@ -27,7 +27,6 @@ export const HomePosts = ({
         pageParams: [1],
       },
       initialPageParam: 1,
-      refetchOnMount: false,
     });
 
   const currentPosts = data.pages.map((page) => page?.posts || []).flat();
