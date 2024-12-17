@@ -18,7 +18,8 @@ const deleteAccessToken = async () => {
 const getAccessToken = async () => {
   const cookieStore = await cookies();
 
-  return cookieStore.get("access-token");
+  const accessToken = cookieStore.get("access-token");
+  return accessToken || null;
 };
 
 const getUser = async () => {
@@ -37,15 +38,14 @@ const getUser = async () => {
 
     const { data, error } = profileSchema.safeParse(response.data);
     if (error) {
-      console.error(error)
+      console.error('Could not parse profileSchema, error: ', error)
       return null;
-
     }
 
     return data
 
   } catch (error) {
-    console.error(error)
+    console.error('Could not get /profile, error: ', error)
     return null;
   }
 };
