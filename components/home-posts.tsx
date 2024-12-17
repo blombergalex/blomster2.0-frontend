@@ -12,9 +12,11 @@ import { Votes } from "./votes";
 export const HomePosts = ({
   initialData,
   limit,
+  userId,
 }: {
   initialData: HomepagePostsData;
   limit: number;
+  userId: string | null;
 }) => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
@@ -51,6 +53,7 @@ export const HomePosts = ({
                 score={score}
                 upvotes={upvotes}
                 downvotes={downvotes}
+                userId={userId}
               />
             </CardHeader>
             <CardBody className="overflow-visible py-2 px-4">

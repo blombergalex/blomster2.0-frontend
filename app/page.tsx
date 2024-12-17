@@ -1,12 +1,14 @@
 import { HomePosts } from "@/components/home-posts";
+import { auth } from "@/lib/auth";
 import { getPosts } from "@/lib/queries";
 
 export const revalidate = 900;
 
-const limit = 10
+const limit = 10;
 
 export default async function Home() {
   const initialData = await getPosts(limit, 1);
+  const user = await auth.getUser();
 
   return (
     <main className="w-full text-primary my-4 px-2 flex flex-col min-h-screen items-center">
@@ -21,7 +23,11 @@ export default async function Home() {
           </a>
         </div>
       ) : (
-        <HomePosts initialData={initialData} limit={limit}/>
+        <HomePosts
+          initialData={initialData}
+          limit={limit}
+          userId={user?.id || null}
+        />
       )}
     </main>
   );
