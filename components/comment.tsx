@@ -1,21 +1,25 @@
 'use client'
 
 import { auth } from "@/lib/auth";
-import { CommentValues } from "@/lib/schemas";
+import { PostPageData } from "@/lib/schemas";
 import { CardBody } from "@nextui-org/react"
 
-export const Comment = async ({_id, author, content}:{id:string, author:string, content: string}> // or use pick<> from commentT ?  
+export const Comment = async ({
+  _id, 
+  author, 
+  content
+}:Pick<PostPageData["comments"][number], "_id" | "author" | "content">
 ) => {
 
   const user = await auth.getUser();
-  const isCommentAuthor = user && user.id === comment.author.id;
+  const isCommentAuthor = user && user.id === author;
   
   return (
     <CardBody>
-        {/* {(isCommentAuthor || isPostAuthor) && ( */} */}
+        {/* {(isCommentAuthor || isPostAuthor) && ( */} 
           {/* <DeleteCommentButton postId={post_id} commentId={id} /> */}
-        )}
-          <p className="text-tiny uppercase font-bold">@{author.username}</p>
+        {/* )} */}
+          <p className="text-tiny uppercase font-bold">@{author}</p>
           <p>{content}</p>
         </CardBody>
   )

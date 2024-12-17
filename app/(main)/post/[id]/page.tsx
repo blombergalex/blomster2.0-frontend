@@ -2,8 +2,8 @@ import { DeletePostButton } from "@/components/delete-post-button";
 import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/queries";
 import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
+import { Comment } from "@/components/comment";
 import { notFound } from "next/navigation";
-import Comment from "postcss/lib/comment";
 
 export const revalidate = 900;
 
