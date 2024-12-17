@@ -3,7 +3,7 @@
 import { getPosts } from "@/lib/queries";
 import { HomepagePostsData } from "@/lib/schemas";
 
-import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Card, CardBody } from "@nextui-org/react";
 import Link from "next/link";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
@@ -43,7 +43,7 @@ export const HomePosts = ({
           className="w-full rounded-sm p-2 md:w-2/3"
         >
           <Card className="flex w-full py-4 border-2 border-white bg-primary text-primary-foreground">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start z-0">
+            <CardBody className="pb-0 pt-2 px-4 flex-col items-start z-0">
               <p className="text-tiny uppercase font-bold">
                 @{author.username}
               </p>
@@ -55,9 +55,6 @@ export const HomePosts = ({
                 downvotes={downvotes}
                 userId={userId}
               />
-            </CardHeader>
-            <CardBody className="overflow-visible py-2 px-4">
-              {/* <p>{trimmedContent}</p> */}
             </CardBody>
           </Card>
         </Link>

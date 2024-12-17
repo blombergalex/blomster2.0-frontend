@@ -29,6 +29,7 @@ const config: Config = {
               DEFAULT: '#FF8C00', // Default orange
               foreground: '#ffffff',
               300: '#F4743B', // Dark orange
+              400: '#E0E0E0', // Light grey
               500: '#D3D3D3', // Light text color
               600: '#27272a', // Dark grey
             },
