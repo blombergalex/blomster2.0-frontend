@@ -9,26 +9,31 @@ import { revalidatePath } from "next/cache";
 
 export const createComment = async (data: CommentValues) => {
   const parsedData = commentActionSchema.parse(data)
+    console.log("Parsed data:", parsedData); // not logging
   const accessToken = await auth.getAccessToken()
 
   if (!accessToken) {
+    console.error("Access token is missing.");
     return { error: "You need to be logged in to comment" };
   }
+  console.log("Access token:", accessToken.value);
 
   let postId;
-
+  console.log("Posting to Post ID:", postId); // not logging
+  console.log("Request Data:", parsedData); // not logging
   try {
-    //gör en post request till /posts (som stämmer överens med post requesten i backend)
-    // const response = await client.post("/posts/:id", parsedData, { // kanske ska va `/posts/${postId}`
-    const response = await client.post(`/posts/${postId}`, parsedData, { // kanske ska va `/posts/${postId}`
-
+    const response = await client.post(`/posts/${postId}`, parsedData, { 
       headers: {
         Authorization: `Bearer ${accessToken.value}`,
       },
     });
-
+    
     postId = response.data.id;
+    console.log("Post ID from response:", postId); // not logging
+
   } catch (error) {
+    console.error("Axios Error:", error); // not logging
+    console.log("Parsed Data at Error:", parsedData); // not logging
     return handleAxiosError(error);
   }
 

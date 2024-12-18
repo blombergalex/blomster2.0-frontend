@@ -19,7 +19,8 @@ export const handleAxiosError = (error: unknown): ServerActionResponse => {
   }
 
   return {
-    error: error.response?.data.message || defaultErrorMessage,
+    error: error.response?.data.message 
+    || defaultErrorMessage, // this is thrown so it is an axios error
   };
 };
 

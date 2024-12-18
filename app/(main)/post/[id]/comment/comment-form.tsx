@@ -13,13 +13,12 @@ import { useForm } from "react-hook-form"
 export const CommentForm = ({post_id}: {post_id:string}) => {
 
   console.log(post_id)
-  const { mutate, isPending} = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (values: CommentValues) => {
-      handleServerActionError(await createComment(values))
+      handleServerActionError(await createComment(values)) 
     },
     onError: toastServerError,
   })
-  
   
   const {
     register,
