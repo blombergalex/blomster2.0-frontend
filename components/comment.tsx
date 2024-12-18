@@ -15,7 +15,7 @@ export const Comment = async ({_id, author, content, isPostAuthor} : CommentProp
   const isCommentAuthor = user && user.id === author;
 
   return (
-    <CardBody>
+    <CardBody className="px-4">
       {isCommentAuthor || isPostAuthor && (
         <DeleteCommentButton _id={_id} />
       )}

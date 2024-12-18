@@ -1,8 +1,10 @@
 import { DeletePostButton } from "@/components/delete-post-button";
 import { auth } from "@/lib/auth";
 import { getPost } from "@/lib/queries";
-import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { Comment } from "@/components/comment";
+import { CommentForm } from "./comment/comment-form";
+
+import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { notFound } from "next/navigation";
 
 export const revalidate = 900;
@@ -50,7 +52,7 @@ export default async function PostPage({
           <p className="text-md p-1">{post.content}</p>
         </CardBody>
       </Card>
-      <Card className="my-4 bg-background rounded-none shadow-none">
+      <Card className="my-4 px-4 bg-background rounded-none shadow-none">
         <p className="text-tiny uppercase font-semibold m-4">Comments</p>
         {post.comments &&
           post.comments.map(({ _id, content, author}) => (
@@ -62,7 +64,7 @@ export default async function PostPage({
               isPostAuthor={isPostAuthor}
             />
           ))}
-        {/* {user && <CommentForm post_id={post.id} />} */}
+        {user && <CommentForm post_id={post.id} />}
       </Card>
     </main>
   );

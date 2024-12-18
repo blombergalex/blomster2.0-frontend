@@ -19,17 +19,12 @@ export const logInSchema = z.object({
 
 export type LogInValues = z.infer<typeof logInSchema>;
 
-export const postSchema = z.object({
-  title: z.string().min(3, "Minimum 3 characters"),
-  content: z.string().optional(),
-});
-
-export const commentSchema = z.object({
+export const commentActionSchema = z.object({
   content: z.string().min(1, "Comment must contain at least 1 character"),
   post_id: z.string(),
 });
 
-export type CommentValues = z.infer<typeof commentSchema>;
+export type CommentValues = z.infer<typeof commentActionSchema>;
 
 export const postActionSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -37,6 +32,7 @@ export const postActionSchema = z.object({
 });
 
 export type PostValues = z.infer<typeof postActionSchema>;
+
 
 // data schemas
 
