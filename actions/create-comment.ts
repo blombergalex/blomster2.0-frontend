@@ -22,7 +22,7 @@ export const createComment = async (data: CommentValues) => {
   console.log("Posting to Post ID:", postId); // not logging
   console.log("Request Data:", parsedData); // not logging
   try {
-    const response = await client.post(`/posts/${postId}`, parsedData, { 
+    const response = await client.post(`/post/${postId}`, parsedData, { 
       headers: {
         Authorization: `Bearer ${accessToken.value}`,
       },
