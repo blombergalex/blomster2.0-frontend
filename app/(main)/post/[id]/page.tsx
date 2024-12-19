@@ -59,6 +59,7 @@ export default async function PostPage({
               content={content}
               author={author}
               isPostAuthor={isPostAuthor}
+              postId={post.id}
             />
           ))}
         {user && <CommentForm post_id={post.id} />}

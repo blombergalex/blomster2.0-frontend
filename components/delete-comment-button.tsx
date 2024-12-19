@@ -6,10 +6,10 @@ import { handleServerActionError, toastServerError } from "@/lib/error-handling"
 import { Button } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 
-export const DeleteCommentButton = ({ _id }: { _id: string }) => {
+export const DeleteCommentButton = ({ postId, commentId }: { postId: string, commentId: string }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
-      handleServerActionError(await deleteComment(_id))
+      handleServerActionError(await deleteComment(postId, commentId))
     },
     onError: toastServerError,
   });

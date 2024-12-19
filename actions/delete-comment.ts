@@ -5,7 +5,7 @@ import { client } from "@/lib/client";
 import { handleAxiosError } from "@/lib/error-handling";
 import { revalidatePath } from "next/cache";
 
-export const deleteComment = async (postId: string) => {
+export const deleteComment = async (postId: string, commentId: string) => {
   const accessToken = await auth.getAccessToken()
 
   if (!accessToken) {
@@ -13,7 +13,7 @@ export const deleteComment = async (postId: string) => {
   }
 
   try {
-    await client.delete(`/post/${postId}`, {
+    await client.delete(`/post/${postId}/${commentId}`, { 
       headers: {
         Authorization: `Bearer ${accessToken.value}`,
       },
