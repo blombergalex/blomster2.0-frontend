@@ -18,12 +18,16 @@ export const CommentForm = ({post_id}: {post_id:string}) => {
       handleServerActionError(await createComment(values)) 
     },
     onError: toastServerError,
+    onSuccess: () => {
+      reset()
+    }
   })
   
   const {
     register,
     handleSubmit,
     formState: {errors},
+    reset,
   } = useForm<CommentValues>({
     resolver: zodResolver(commentActionSchema),
     defaultValues: {

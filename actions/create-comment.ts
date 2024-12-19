@@ -18,8 +18,7 @@ export const createComment = async (data: CommentValues) => {
   console.log("Access token:", accessToken.value);
 
   let postId;
-  console.log("Posting to Post ID:", postId); // loggar undefined
-  console.log("Request Data:", parsedData); //loggar  Request Data: { content: 'test alex1', post_id: '675992e6b6177f897b48bc2d' }
+  console.log("Request Data:", parsedData);
   try {
     const response = await client.post(`/post/${postId}`, parsedData, { //
       headers: {
