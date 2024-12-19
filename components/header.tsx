@@ -10,7 +10,7 @@ export const Header = async () => {
   const user = await auth.getUser()
 
   return (
-    <header className="flex text-foreground p-2 sticky top-0 border-b-2 bg-background border-t-gray-300 gap-1 z-10 md:p-6">
+    <header className="flex text-foreground p-2 sticky top-0 border-b-2 bg-background border-t-gray-300 gap-1 z-10 md:p-6 min-[340px]:p-1">
       <nav className="container flex items-center justify-between">
         <ul>
           <li>

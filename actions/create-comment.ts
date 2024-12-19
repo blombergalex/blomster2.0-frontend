@@ -27,11 +27,8 @@ export const createComment = async (data: CommentValues) => {
     });
     
     postId = response.data.id;
-    console.log("Post ID from response:", postId); // not logging
 
   } catch (error) {
-    console.error("Axios Error:", error); // not logging
-    console.log("Parsed Data at Error:", parsedData); // not logging
     return handleAxiosError(error);
   }
 

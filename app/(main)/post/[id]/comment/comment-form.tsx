@@ -38,7 +38,7 @@ export const CommentForm = ({post_id}: {post_id:string}) => {
   return (
     <form
       onSubmit={handleSubmit(values => mutate(values))}
-      className="w-full gap-4 px-4 items-center"
+      className="w-full gap-4 md:px-4 items-center min-[344px]:px-1"
     >
         <div className="flex items-center gap-3">
           <Input className="" {...register('content')} label='Comment...' name='content' required />
