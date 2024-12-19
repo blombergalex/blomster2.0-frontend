@@ -21,11 +21,8 @@ export default async function PostPage({
     return notFound();
   }
 
-  console.log(post)
-
   const user = await auth.getUser();
   const isPostAuthor = user && user.id === post.author.id;
-  console.log('is post author: ', isPostAuthor)
 
   return (
     <main className="flex flex-col justify-between gap-10 min-h-screen">

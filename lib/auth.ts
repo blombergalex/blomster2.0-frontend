@@ -24,7 +24,6 @@ const getAccessToken = async () => {
 
 const getUser = async () => {
   const accessToken = await getAccessToken();
-  console.log('Accesstoken: ', accessToken)
 
   if (!accessToken || !accessToken.value) {
     return null;
@@ -43,7 +42,6 @@ const getUser = async () => {
       return null;
     }
 
-    console.log('user data: ', data)
     return data
 
   } catch (error) {
