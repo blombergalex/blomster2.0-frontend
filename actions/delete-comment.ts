@@ -13,7 +13,7 @@ export const deleteComment = async (postId: string) => {
   }
 
   try {
-    await client.delete('/post/:id', {
+    await client.delete(`/post/${postId}`, {
       headers: {
         Authorization: `Bearer ${accessToken.value}`,
       },
