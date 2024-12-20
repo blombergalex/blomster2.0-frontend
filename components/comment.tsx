@@ -22,9 +22,9 @@ export const Comment = async ({
 
   return (
     <CardBody className="px-4">
-      {/* {(isPostAuthor || isCommentAuthor) && ( */}
-      <DeleteCommentButton commentId={_id} postId={postId} />
-      {/* )} */}
+      {(isPostAuthor || isCommentAuthor) && (
+        <DeleteCommentButton commentId={_id} postId={postId} />
+      )}
       <p className="text-tiny uppercase font-bold">@{author}</p>
       <p>{content}</p>
       <p>comment id {_id}</p>
