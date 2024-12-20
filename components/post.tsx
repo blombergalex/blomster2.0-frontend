@@ -1,10 +1,9 @@
-import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Card, CardBody, CardHeader } from '@nextui-org/react'
 
-import Link from "next/link";
+import Link from 'next/link'
 
 export const Post = () => {
-
-  const slug = "dummy-slug"
+  const slug = 'dummy-slug'
 
   return (
     <Link
@@ -13,13 +12,13 @@ export const Post = () => {
     >
       <Card className="flex w-full py-4 border-2 border-white bg-primary text-primary-foreground">
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start z-0">
-          <p className="text-tiny uppercase font-bold">@{"username"}</p>
-          <h4 className="font-bold text-large">{"title"}</h4>
+          <p className="text-tiny uppercase font-bold">@{'username'}</p>
+          <h4 className="font-bold text-large">{'title'}</h4>
         </CardHeader>
         <CardBody className="overflow-visible py-2 px-4">
-          <p>{"trimmedContent"}</p>
+          <p>{'trimmedContent'}</p>
         </CardBody>
       </Card>
     </Link>
-  );
-};
+  )
+}

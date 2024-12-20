@@ -1,30 +1,29 @@
-"use client";
+'use client'
 
-import { getPosts } from "@/lib/queries";
-import { HomepagePostsData } from "@/lib/schemas";
+import { getPosts } from '@/lib/queries'
+import { HomepagePostsData } from '@/lib/schemas'
 
-import { Card, CardBody } from "@nextui-org/react";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
-import { Votes } from "./votes";
-import { useRouter } from "next/navigation";
+import { Card, CardBody } from '@nextui-org/react'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { useEffect, useRef } from 'react'
+import { Votes } from './votes'
+import { useRouter } from 'next/navigation'
 
 export const HomePosts = ({
   initialData,
   limit,
   userId,
 }: {
-  initialData: HomepagePostsData;
-  limit: number;
-  userId: string | null;
+  initialData: HomepagePostsData
+  limit: number
+  userId: string | null
 }) => {
-
   const router = useRouter()
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: ["posts"],
+      queryKey: ['posts'],
       queryFn: async ({ pageParam }) => {
-        return await getPosts(limit, pageParam);
+        return await getPosts(limit, pageParam)
       },
       getNextPageParam: (lastPage) => lastPage?.nextPage,
       initialData: {
@@ -32,9 +31,9 @@ export const HomePosts = ({
         pageParams: [1],
       },
       initialPageParam: 1,
-    });
+    })
 
-  const currentPosts = data.pages.map((page) => page?.posts || []).flat();
+  const currentPosts = data.pages.map((page) => page?.posts || []).flat()
 
   return (
     <section className="flex flex-col gap-2 w-full px-2 items-center">
@@ -68,38 +67,38 @@ export const HomePosts = ({
         fetchNextPage={fetchNextPage}
       />
     </section>
-  );
-};
+  )
+}
 
 const Loader = ({
   hasNextPage,
   isFetchingNextPage,
   fetchNextPage,
 }: {
-  hasNextPage: boolean;
-  isFetchingNextPage: boolean;
-  fetchNextPage: () => void;
+  hasNextPage: boolean
+  isFetchingNextPage: boolean
+  fetchNextPage: () => void
 }) => {
-  const loader = useRef(null);
+  const loader = useRef(null)
 
   useEffect(() => {
-    const { current } = loader;
-    if (!current) return;
+    const { current } = loader
+    if (!current) return
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry?.isIntersecting && !isFetchingNextPage) {
-        fetchNextPage();
+        fetchNextPage()
       }
-    });
+    })
 
-    observer.observe(current);
+    observer.observe(current)
     return () => {
-      observer.unobserve(current);
-    };
-  }, [loader, fetchNextPage, isFetchingNextPage]);
+      observer.unobserve(current)
+    }
+  }, [loader, fetchNextPage, isFetchingNextPage])
 
   if (!hasNextPage) {
-    return null;
+    return null
   }
 
   return (
@@ -118,5 +117,5 @@ const Loader = ({
     >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </svg>
-  );
-};
+  )
+}

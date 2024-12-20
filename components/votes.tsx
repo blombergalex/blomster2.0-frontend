@@ -1,12 +1,9 @@
-"use client";
+'use client'
 
-import { vote } from "@/actions/vote";
-import {
-  handleServerActionError,
-  toastServerError,
-} from "@/lib/error-handling";
-import { cn } from "@/utils/classes";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { vote } from '@/actions/vote'
+import { handleServerActionError, toastServerError } from '@/lib/error-handling'
+import { cn } from '@/utils/classes'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export const Votes = ({
   postId,
@@ -15,35 +12,34 @@ export const Votes = ({
   upvotes,
   downvotes,
 }: {
-  postId: string;
-  userId: string | null;
-  score: number;
-  upvotes: string[];
-  downvotes: string[];
+  postId: string
+  userId: string | null
+  score: number
+  upvotes: string[]
+  downvotes: string[]
 }) => {
-
   const queryClient = useQueryClient()
 
   const { mutate } = useMutation({
-    mutationFn: async (type: "upvote" | "downvote") => {
-      handleServerActionError(await vote({ type, postId }));
+    mutationFn: async (type: 'upvote' | 'downvote') => {
+      handleServerActionError(await vote({ type, postId }))
     },
     onError: toastServerError,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts']})
-    }
-  });
+      queryClient.invalidateQueries({ queryKey: ['posts'] })
+    },
+  })
 
   return (
     <div className="mt-4 flex itemx-center gap-1">
       <button
         onClick={(event) => {
           event.stopPropagation()
-          mutate("upvote");
+          mutate('upvote')
         }}
         className={cn(
-          "text-primary-400",
-          userId && upvotes.includes(userId) && "text-background",
+          'text-primary-400',
+          userId && upvotes.includes(userId) && 'text-background'
         )}
       >
         ⬆︎
@@ -52,15 +48,15 @@ export const Votes = ({
       <button
         onClick={(event) => {
           event.stopPropagation()
-          mutate("downvote");
+          mutate('downvote')
         }}
         className={cn(
-          "text-primary-400",
-          userId && downvotes.includes(userId) && "text-background",
+          'text-primary-400',
+          userId && downvotes.includes(userId) && 'text-background'
         )}
       >
         ⬇︎
       </button>
     </div>
-  );
-};
+  )
+}
