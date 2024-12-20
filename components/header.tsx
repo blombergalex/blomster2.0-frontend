@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { UserCircleIcon as SolidUserCircleIcon} from "@heroicons/react/16/solid";
+import Link from 'next/link'
+import { UserCircleIcon as SolidUserCircleIcon } from '@heroicons/react/16/solid'
 
-import { Button } from "@nextui-org/react";
-import { buttonClasses } from "@/utils/classes";
-import LogOutButton from "./logout-button";
-import { auth } from "@/lib/auth";
+import { Button } from '@nextui-org/react'
+import { buttonClasses } from '@/utils/classes'
+import LogOutButton from './logout-button'
+import { auth } from '@/lib/auth'
 
 export const Header = async () => {
   const user = await auth.getUser()
@@ -14,28 +14,32 @@ export const Header = async () => {
       <nav className="container flex items-center justify-between">
         <ul>
           <li>
-            <Link className="uppercase font-bold text-medium" href="/">Blomster</Link>
+            <Link className="uppercase font-bold text-medium" href="/">
+              Blomster
+            </Link>
           </li>
         </ul>
       </nav>
       {user ? (
         <>
           <LogOutButton />
-          <Link href={"/create"} className="self-center">
+          <Link href={'/create'} className="self-center">
             <Button className={buttonClasses}>Create post</Button>
           </Link>
           <div className="mx-2">
-            <h3 className="text-small uppercase font-semibold text-primary dark:text-foreground">{user.username}</h3>
+            <h3 className="text-small uppercase font-semibold text-primary dark:text-foreground">
+              {user.username}
+            </h3>
             <SolidUserCircleIcon className="text-primary dark:text-foreground" />
           </div>
         </>
       ) : (
-        <Link href={"/log-in"}>
+        <Link href={'/log-in'}>
           <Button className={buttonClasses}>Log in</Button>
         </Link>
       )}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
