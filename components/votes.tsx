@@ -43,19 +43,20 @@ export const Votes = ({
         }}
         className={cn(
           "text-primary-400",
-          userId && upvotes.includes(userId) && "text-background"
+          userId && upvotes.includes(userId) && "text-background",
         )}
       >
         ⬆︎
       </button>
       <span className="min-w-8 text-center">{score}</span>
       <button
-        onClick={() => {
+        onClick={(event) => {
+          event.stopPropagation()
           mutate("downvote");
         }}
         className={cn(
           "text-primary-400",
-          userId && downvotes.includes(userId) && "text-background"
+          userId && downvotes.includes(userId) && "text-background",
         )}
       >
         ⬇︎
