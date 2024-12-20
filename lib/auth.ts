@@ -8,7 +8,7 @@ const setAccessToken = async (accessToken: string) => {
 
   cookieStore.set('access-token', accessToken, {
     httpOnly: true,
-    expires: 1500,
+    expires: 1000 * 60 * 60, // 1h
   })
 }
 
