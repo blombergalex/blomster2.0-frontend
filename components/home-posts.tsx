@@ -4,10 +4,10 @@ import { getPosts } from "@/lib/queries";
 import { HomepagePostsData } from "@/lib/schemas";
 
 import { Card, CardBody } from "@nextui-org/react";
-import Link from "next/link";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { Votes } from "./votes";
+import { useRouter } from "next/navigation";
 
 export const HomePosts = ({
   initialData,
@@ -18,6 +18,8 @@ export const HomePosts = ({
   limit: number;
   userId: string | null;
 }) => {
+
+  const router = useRouter()
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: ["posts"],
@@ -37,10 +39,11 @@ export const HomePosts = ({
   return (
     <section className="flex flex-col gap-2 w-full px-2 items-center">
       {currentPosts.map(({ id, title, author, score, upvotes, downvotes }) => (
-        <Link
+        <div
+          role="button"
           key={id}
-          href={`/post/${id}`}
           className="w-full rounded-sm p-2 md:w-2/3"
+          onClick={() => router.push(`/post/${id}`)}
         >
           <Card className="flex w-full py-4 border-2 border-white bg-primary text-primary-foreground">
             <CardBody className="pb-0 pt-2 px-4 flex-col items-start z-0">
@@ -57,7 +60,7 @@ export const HomePosts = ({
               />
             </CardBody>
           </Card>
-        </Link>
+        </div>
       ))}
       <Loader
         hasNextPage={hasNextPage}
