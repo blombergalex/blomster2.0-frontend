@@ -27,7 +27,6 @@ export const Comment = async ({
       )}
       <p className="text-tiny uppercase font-bold">@{author}</p>
       <p>{content}</p>
-      <p>comment id {_id}</p>
     </CardBody>
   )
 }
